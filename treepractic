@@ -1,0 +1,53 @@
+#include<string>
+#include<iostream>
+
+using namespace std;
+
+// Represents a single node in an arbitrary 
+// tree structure
+class TreeNode{
+
+  public:
+    TreeNode(TreeNode* p, string k, int pwr)
+      :parent{p}, key{k}, val_mw{pwr}
+      {
+        // set children nodes to nullptr
+        childL=nullptr;
+        childR=nullptr;
+      }
+
+    TreeNode* parent;
+    string key; // the searchable value
+    int val_mw; // the payload of the node
+    TreeNode* childL;
+    TreeNode* childR;
+};
+
+TreeNode* powerTree;
+
+//an in order recorsive tree tranversal algrithm 12.1 in intro to algos
+
+void in_order_tree_walk(TreeNode* root){
+  if(root != nullptr){
+    in_order_tree_walk(root-> childL)
+  }
+}
+
+int main(){
+  TreeNode* node  = new TreeNode(nullptr, "Fermi",1098);
+  //make our first node the root of the tree
+  powerTree=node;
+  TreeNode* tempParent= powerTree;
+
+node = new treeNode(powerTree, "Blue Castle project", 1500);
+//assign our blue castle to parents left child
+powerTree ->childL = node;
+node = new TreeNode(tempParent, "Ocanee", 846);
+tempParent->childR = node;
+//node oconee the parent well link limerick to
+tempParent= node;
+
+node = new TreeNode(tempParent, "Limerick", 1134);
+//tell parent about its new child
+tempParent->childL=node;
+}
